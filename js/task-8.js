@@ -20,13 +20,16 @@ const boxesContainer = document.querySelector('#boxes');
 
 //Функция, создающая указанное кол-во элементов
 const createBoxes = amount => {
-  let boxes = [];
+  // Массив для хранения элементов для последующего добавления в разметку одной операцией
+  const boxes = [];
+
+  // Начальные размеры элемента
   let width = 30;
   let height = 30;
 
   for (let i = 1; i <= amount; i++) {
-    // Создет элемент
-    let box = document.createElement('div');
+    // Создает элемент
+    const box = document.createElement('div');
 
     // Создает рандомные числа для каждого цвета RGB
     const red = Math.floor(Math.random() * 250);

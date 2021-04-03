@@ -9,19 +9,19 @@ function onInputTyping() {
   const inputTextLength = inputEl.value.length;
   const maxLength = inputEl.getAttribute('data-length');
 
-  inputEl.classList.add('valid');
-
-  if (!inputTextLength) {
-    inputEl.classList.remove('valid');
+  if (inputTextLength <= maxLength) {
+    inputEl.classList.add('valid');
     inputEl.classList.remove('invalid');
   }
 
   if (inputTextLength > maxLength) {
-    return inputEl.classList.replace('valid', 'invalid');
+    inputEl.classList.add('invalid');
+    inputEl.classList.remove('valid');
   }
 
-  if (inputEl.classList.contains('invalid')) {
-    return inputEl.classList.replace('invalid', 'valid');
+  if (!inputTextLength) {
+    inputEl.classList.remove('valid');
+    inputEl.classList.remove('invalid');
   }
 }
 
