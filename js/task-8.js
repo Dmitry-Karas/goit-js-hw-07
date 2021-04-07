@@ -32,9 +32,9 @@ const createBoxes = amount => {
     const box = document.createElement('div');
 
     // Создает рандомные числа для каждого цвета RGB
-    const red = Math.floor(Math.random() * 250);
-    const green = Math.floor(Math.random() * 250);
-    const blue = Math.floor(Math.random() * 250);
+    const red = Math.floor(Math.random() * 255);
+    const green = Math.floor(Math.random() * 255);
+    const blue = Math.floor(Math.random() * 255);
     const color = `rgb(${red}, ${green}, ${blue})`;
 
     // Добавляет инлайн стили каждому элементу
@@ -52,15 +52,18 @@ const createBoxes = amount => {
     height += 10;
   }
 
-  // Добавляет элементы на страницу одной операцией
-  boxesContainer.append(...boxes);
+  // Добавляет элементы на страницу одной операцией и проверяет на максимальное кол-во
+  if (boxes.length <= 100) {
+    boxesContainer.append(...boxes);
+  } else {
+    alert('Слишком много боксов. Максимум 100!');
+  }
 };
 
 // Создает кол-во элементов, указанное в инпуте
 function onRenderBtnClick() {
   boxesContainer.innerHTML = '';
   createBoxes(input.value);
-  input.value = 0;
 }
 
 // Удаляет все элементы
